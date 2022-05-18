@@ -6,7 +6,7 @@ body {
 
 .container {
     width: 80%;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .header {
@@ -31,7 +31,7 @@ body {
 .banner2 {
     width: 60vw;
     height: 100vh;
-    background-color: #C6C6C6;
+    background-color: beige;
 }
 
 .banner2 .container {
@@ -39,14 +39,14 @@ body {
 }
 
 .navbar {
-    width: 500px;
+    width: 700px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 45px;
+    padding: 0;
     list-style: none;
     color: #0E1170;
-    float: left;
 }
 
 .navbar a {
@@ -73,13 +73,6 @@ a:hover {
 .borda:hover {
     border-color: #0E1170;
     color: #E50508;
-}
-
-.logo {
-    width: 80px;
-    margin-top: 20px;
-    margin-left: 20px;
-    float: left;
 }
 
 .texto p {
@@ -111,6 +104,12 @@ a:hover {
     margin-top: 80px;
 }
 
+button:hover {
+    background-color: #ff3b3e;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
 .avalie img {
     width: 50px;
     margin-left: 300px;
@@ -137,4 +136,11 @@ a:hover {
 .footer .container {
     align-items: center;
     justify-content: center;
+}
+
+.logo {
+    width: 80px;
+    margin-top: 20px;
+    margin-left: 20px;
+    float: left;
 }
