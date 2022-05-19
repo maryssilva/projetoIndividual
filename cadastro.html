@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MGCS</title>
+    <script src="./js/funcoes.js"></script>
+    <link rel="icon" href="img/mgcs.png">
+    <link rel="stylesheet" href="css/styleCadastro.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="index.html"><img src="img/semslogan.png"></a>
+            <ul class="navbar">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="perambular.html">Perambular</a></li>
+                <li><a href="chartjs.html">Dashboards</a></li>
+                <li><a href="contato.html">Contate-nos</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="borda agora"><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="container">
+            <div class="card">
+                <h3>Cadastre-se aqui!</h3>
+                <form>
+                    <input placeholder="Nome:" type="text" id="inputNome">
+
+                    <input placeholder="CPF:" type="text" id="inputCpf">
+
+                    <input placeholder="Telefone:" type="text" id="inputTelefone">
+
+                    <label for="cargo">Cargo:</label>
+                    <select id="cargo">
+                        <option value="selecione">Selecione</option>
+                        <option value="adm">Administrador</option>
+                        <option value="func">Funcionário</option>
+                    </select>
+
+                    <label for="transp">Transportadora:</label>
+                    <select id="transp">
+                        <option value="selecione">Selecione</option>
+                        <option value="fretebras">FreteBras</option>
+                        <option value="loggi">Loggi</option>
+                        <option value="lalamove">Lalamove</option>
+                    </select>
+                </form>
+
+                <h3>Login</h3>
+                <form>
+                    <input placeholder="E-mail:" type="email" id="inputEmail">
+
+                    <input placeholder="Senha:" type="password" id="inputSenha">
+
+                    <input placeholder="Confirmação de senha:" type="password" id="inputConfSenha">
+
+                    <button type="button">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <h4>&hearts; Feito por uma aluna nordestina da SP Tech 2022 &copy;</h4>
+        </div>
+    </div>
+</body>
+
+</html>
