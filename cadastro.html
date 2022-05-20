@@ -35,13 +35,13 @@
             <div class="card">
                 <h3>Cadastre-se aqui!</h3>
                 <form>
-                    <input placeholder="Nome:" type="text" id="inputNome">
+                    <label>Nome:</label>
+                    <input placeholder="Digite seu nome:" type="text" id="inputNome">
 
-                    <input placeholder="CPF:" type="text" id="inputCpf">
+                    <label>Telefone:</label>
+                    <input placeholder="(XX) 9XXXX-XXXX" type="text" id="inputTelefone">
 
-                    <input placeholder="Telefone:" type="text" id="inputTelefone">
-
-                    <label for="estado">Estado que reside:</label>
+                    <label>Estado que reside:</label>
                     <select id="estado">
                         <option value="selecione">Selecione</option>
                         <option value="AC">AC</option>
@@ -76,10 +76,11 @@
 
                 <h3>Login</h3>
                 <form>
-                    <input placeholder="E-mail:" type="email" id="inputEmail">
+                    <label>E-mail:</label>
+                    <input placeholder="usuario@gmail.com" type="email" id="inputEmail">
 
-                    <input placeholder="Senha:" type="password" id="inputSenha">
-
+                    <label>Senha:</label>
+                    <input placeholder="Digite sua senha:" type="password" id="inputSenha">
                     <input placeholder="Confirmação de senha:" type="password" id="inputConfSenha">
 
                     <button type="button">Cadastrar</button>
