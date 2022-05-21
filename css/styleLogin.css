@@ -63,6 +63,28 @@ a:hover {
     height: 100vh;
 }
 
+.alerta_erro {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card_erro {
+    display: none;
+    background-color: #fff;
+    color: black;
+    width: 230px;
+    position: static;
+    border-radius: 4px;
+    border: #e6005a 3px solid;
+    padding: 10px;
+    margin-right: 10%;
+}
+
+.card_erro #mensagem_erro {
+    font-weight: 500;
+    font-size: 20px;
+}
+
 .banner .container {
     height: 700px;
     display: flex;
@@ -141,6 +163,21 @@ button:hover {
     font-weight: 500;
     color: #FFFFFF;
     cursor: pointer;
+}
+
+.loading-div {
+    width: 60px;
+    margin: auto;
+    display: none;
+}
+
+.loading-div img {
+    height: 50px;
+    width: 50px;
+}
+
+.banner #div_erros_login {
+    margin-top: 15px;
 }
 
 .footer {
