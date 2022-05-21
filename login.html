@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>MGCS | Login</title>
+
     <script src="./js/funcoes.js"></script>
-    <link rel="icon" href="img/icone.png">
+
+    <link rel="icon" href="./assets/img/icone.png">
     <link rel="stylesheet" href="css/styleLogin.css">
 </head>
 
 <body>
     <div class="header">
         <div class="container">
-            <a href="index.html"><img src="img/semslogan.png"></a>
+            <a href="index.html"><img src="./assets/img/semslogan.png"></a>
             <ul class="navbar">
                 <li><a href="index.html">Início</a></li>
                 <li><a href="perambular.html">Perambular</a></li>
@@ -27,18 +30,30 @@
     </div>
 
     <div class="banner">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
+
         <div class="container">
             <div class="card">
-                <h3>Login</h3>
+                <h3>Olá novamente!</h3>
                 <form>
                     <label>E-mail:</label>
-                    <input placeholder="usuario@gmail.com" type="email" id="inputEmail">
+                    <input placeholder="usuario@gmail.com" type="email" id="email_input">
 
                     <label>Senha:</label>
-                    <input placeholder="Digite sua senha:" type="password" id="inputSenha">
+                    <input placeholder="********" type="password" id="senha_input">
 
-                    <button type="button">Cadastrar</button>
+                    <button type="button" onclick="entrar()">Entrar</button>
                 </form>
+
+                <div id="div_aguardar" class="loading-div">
+                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                </div>
+
+                <div id="div_erros_login"></div>
 
                 <p>Ainda não tem login? <a href="cadastro.html">Cadastre-se aqui</a></p>
             </div>
@@ -53,3 +68,87 @@
 </body>
 
 </html>
+
+<script>
+
+
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
