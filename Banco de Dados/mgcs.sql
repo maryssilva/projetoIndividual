@@ -1,0 +1,13 @@
+CREATE DATABASE MGCS;
+USE MGCS;
+
+CREATE TABLE usuario(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45),
+    telefone VARCHAR(15) UNIQUE,
+    estado VARCHAR(2),
+    email VARCHAR(45) UNIQUE,
+    senha VARCHAR(45)
+);
+
+SELECT * FROM usuario;
