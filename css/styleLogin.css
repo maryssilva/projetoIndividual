@@ -25,6 +25,59 @@ body {
     margin-left: 100px;
 }
 
+.dropbtn {
+    color: #0E1170;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 16px;
+    padding-left: 0;
+    padding-right: 0;
+    border: none;
+}
+
+.dropbtn:hover {
+    background-color: transparent;
+    color: #E50508;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: beige;
+    min-width: 185px;
+    box-shadow: 0px 8px 16px 0px rgb(0, 0, 0);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    color: #E50508;
+    text-decoration: underline;
+}
+
+.dropicon {
+    color: #0E1170;
+}
+
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -41,6 +94,7 @@ body {
 
 .agora {
     font-weight: 900;
+    text-decoration: underline;
 }
 
 .borda {
@@ -133,7 +187,7 @@ form input {
 }
 
 input::placeholder {
-    color: gray;
+    color: rgb(160, 160, 160);
     font-size: 14px;
     margin: 0;
     padding: 0;
@@ -180,6 +234,25 @@ button:hover {
     margin-top: 15px;
 }
 
+.content-footer {
+    background-color: #0E1170;
+}
+
+.content-footer .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-footer .container h4 {
+    color: #FFFFFF;
+}
+
+ion-icon {
+    color: #FFFFFF;
+}
+
 .footer {
     background-color: #0E1170;
     height: 80px;
@@ -195,4 +268,5 @@ button:hover {
 .footer .container {
     align-items: center;
     justify-content: center;
+    display: flex;
 }
