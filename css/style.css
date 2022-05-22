@@ -38,12 +38,65 @@ body {
   height: 100%;
 }
 
+.dropbtn {
+  color: #0E1170;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 16px;
+  padding-left: 0;
+  padding-right: 0;
+  border: none;
+}
+
+.dropbtn:hover {
+  background-color: transparent;
+  color: #E50508;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: beige;
+  min-width: 185px;
+  box-shadow: 0px 8px 16px 0px rgb(0, 0, 0);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  color: #E50508;
+  text-decoration: underline;
+}
+
+.dropicon {
+  color: #0E1170;
+}
+
 .navbar {
   width: 700px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 45px;
+  margin-top: 40px;
   padding: 0;
   list-style: none;
   color: #0E1170;
@@ -57,6 +110,7 @@ body {
 
 .agora {
   font-weight: 900;
+  text-decoration: underline;
 }
 
 .borda {
@@ -75,50 +129,49 @@ a:hover {
   color: #E50508;
 }
 
+.texto {
+  height: 345px;
+}
+
 .texto p {
   color: #000000;
   font-size: 26px;
   width: 500px;
-  padding-top: 130px;
+  padding-top: 90px;
   margin-right: 20px;
   display: flex;
 }
 
 .avalie {
+  width: 100%;
+  margin-top: 100px;
   display: flex;
+  align-items: center;
   flex-direction: column;
-}
-
-.buttonAvalie {
-  cursor: pointer;
-  border: 2px solid #E50508;
-  border-radius: 25px;
-  font-weight: 500;
-  font-size: 20px;
-  padding: 10px 15px;
-  color: black;
-  background-color: transparent;
-  width: 140px;
-  height: 50px;
-  align-self: center;
-  margin-top: 80px;
-}
-
-button:hover {
-  background-color: #ff3b3e;
-  color: #FFFFFF;
-  cursor: pointer;
-}
-
-.avalie img {
-  width: 50px;
-  margin-left: 300px;
-  margin-top: 10px;
+  justify-content: center;
 }
 
 .avalie p {
   font-size: 15px;
-  margin-left: 170px;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.avalie img {
+  width: 60px;
+  margin: 0;
+}
+
+.avalie img:hover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 60px;
+  border: none;
+  background-position: top;
+  transform: translateY(-10px);
+  transition: 1s;
 }
 
 .sobre {
@@ -135,6 +188,16 @@ button:hover {
 
 .banner3 .container {
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: justify;
+}
+
+.banner3 .container p {
+  width: 350px;
+  font-size: 20px;
 }
 
 .banner4 {
@@ -148,6 +211,25 @@ button:hover {
   width: 350px;
   margin-top: 50px;
   margin-left: 85px;
+}
+
+.content-footer {
+  background-color: #0E1170;
+}
+
+.content-footer .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-footer .container h4 {
+  color: #FFFFFF;
+}
+
+ion-icon {
+  color: #FFFFFF;
 }
 
 .footer {
@@ -165,6 +247,7 @@ button:hover {
 .footer .container {
   align-items: center;
   justify-content: center;
+  display: flex;
 }
 
 /* PAGINA DOS GRÁFICOS */
@@ -277,3 +360,24 @@ button:hover {
 .simulador .container {
   flex-direction: column
 }
+
+/* .buttonAvalie {
+  cursor: pointer;
+  border: 2px solid #E50508;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 10px 15px;
+  color: black;
+  background-color: transparent;
+  width: 140px;
+  height: 50px;
+  align-self: center;
+  margin-top: 80px;
+}
+
+button:hover {
+  background-color: #ff3b3e;
+  color: #FFFFFF;
+  cursor: pointer;
+} */
