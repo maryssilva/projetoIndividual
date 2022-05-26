@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MGCS | Ilha de Itamaracá</title>
+
+    <script src="./js/funcoes.js"></script>
+
+    <link rel="icon" href="./assets/img/icone.png">
+    <link rel="stylesheet" href="css/stylePerambular.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="index.html"><img src="./assets/img/semslogan.png"></a>
+            <ul class="navbar">
+                <li><a href="index.html">Início</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn agora">Perambular<ion-icon class="dropicon" name="caret-down-outline">
+                        </ion-icon>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="recife.html">Recife</a>
+                        <a href="olinda.html">Olinda</a>
+                        <a href="porto.html">Porto de Galinhas</a>
+                        <a href="ilha.html">Ilha de Itamaracá</a>
+                    </div>
+                </div>
+                <li><a href="chartjs.html">Dashboards</a></li>
+                <li><a href="avaliar.html">Avaliar</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="borda"><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="carrossel">
+            <div class="container" id="img">
+                <img src="./assets/viagem/00008.jpg">
+                <img src="./assets/viagem/0008.jpg">
+                <img src="./assets/viagem/008.jpg">
+                <img src="./assets/viagem/08.jpg">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="content-footer">
+            <div class="container">
+                <h4>&hearts; Feito por uma aluna nordestina da SP Tech 2022 &copy;</h4>
+                <div class="links"><span>
+                        <h4>LINKS PARA CONTATO</h4>
+                    </span>
+                    <a href="https://www.linkedin.com/in/maahsilvva12/">
+                        <ion-icon size="large" name="logo-linkedin"></ion-icon>
+                    </a>
+
+                    <a href="http://wa.me/5511982993672">
+                        <ion-icon size="large" name="logo-whatsapp"></ion-icon>
+                    </a>
+
+                    <a href="https://www.facebook.com/maahsilva.marys/">
+                        <ion-icon size="large" name="logo-facebook"></ion-icon>
+                    </a>
+
+                    <a href="https://www.instagram.com/maah_silvva12/">
+                        <ion-icon size="large" name="logo-instagram"></ion-icon>
+                    </a>
+
+                    <a
+                        href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJlHnRjpglrQdLQTjmmmqRhmnltKxJlCdVgdQRXZXQKxZKtChFdTnTfXhVGJQpCZLHBSzfL">
+                        <ion-icon size="large" name="mail-outline"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
+
+<script>
+    const imgs = document.getElementById("img");
+    const img = document.querySelectorAll("#img img");
+
+    let idx = 0;
+
+    function carrossel() {
+        idx++
+
+        if (idx > img.length - 1) {
+            idx = 0;
+        }
+
+        imgs.style.transform = `translateX(${-idx * 975}px)`;
+    }
+
+    setInterval(carrossel, 1800);
+</script>
