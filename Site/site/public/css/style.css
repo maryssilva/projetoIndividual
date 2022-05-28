@@ -286,24 +286,6 @@ ion-icon {
   color: #FFFFFF;
 }
 
-.footer {
-  background-color: #0E1170;
-  height: 80px;
-  color: #FFFFFF;
-  display: flex;
-  font-size: 15px;
-}
-
-.footer h4 {
-  text-align: center;
-}
-
-.footer .container {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
 /* PAGINA DOS GRÁFICOS */
 
 .janela {
