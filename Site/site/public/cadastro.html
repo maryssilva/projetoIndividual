@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MGCS | Cadastro</title>
+
+    <script src="./js/funcoes.js"></script>
+
+    <link rel="icon" href="./assets/img/icone.png">
+    <link rel="stylesheet" href="css/styleCadastro.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="index.html"><img src="./assets/img/semslogan.png"></a>
+            <ul class="navbar">
+                <li><a href="index.html">Início</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn">Perambular<ion-icon class="dropicon" name="caret-down-outline"></ion-icon>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="recife.html">Recife</a>
+                        <a href="olinda.html">Olinda</a>
+                        <a href="porto.html">Porto de Galinhas</a>
+                        <a href="ilha.html">Ilha de Itamaracá</a>
+                    </div>
+                </div>
+                <li><a href="chartjs.html">Dashboards</a></li>
+                <li><a href="avaliar.html">Avaliar</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="borda agora"><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="frevo">
+                <img src="./assets/img/frevo.png">
+            </div>
+
+            <div class="card">
+                <h3>Seja bem-vindo!</h3>
+                <form>
+                    <label>Nome:</label>
+                    <input placeholder="Digite seu nome:" type="text" id="nome_input">
+
+                    <label>Telefone:</label>
+                    <input placeholder="(XX) 9XXXX-XXXX" type="text" id="telefone_input">
+
+                    <label>Estado que reside:</label>
+                    <select id="estado_input">
+                        <option value="selecione">Selecione</option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AP">AP</option>
+                        <option value="AM">AM</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MT">MT</option>
+                        <option value="MS">MS</option>
+                        <option value="MG">MG</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PR">PR</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RS">RS</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="SC">SC</option>
+                        <option value="SP">SP</option>
+                        <option value="SE">SE</option>
+                        <option value="TO">TO</option>
+                    </select>
+                </form>
+
+                <h3>Login</h3>
+                <form>
+                    <label>E-mail:</label>
+                    <input placeholder="usuario@gmail.com" type="email" id="email_input">
+
+                    <label>Senha:</label>
+                    <input placeholder="********" type="password" id="senha_input">
+                    <input placeholder="********" type="password" id="confirmacao_senha_input">
+
+                    <button type="button" onclick="cadastrar()">Cadastrar</button>
+                </form>
+
+                <div id="div_aguardar" class="loading-div">
+                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                </div>
+                <div id="div_erros_login"></div>
+
+                <p>Já tem cadastro? <a href="login.html">Se logue aqui</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="content-footer">
+            <div class="container">
+                <h4>&hearts; Feito por uma aluna nordestina da SP Tech 2022 &copy;</h4>
+                <div class="links"><span>
+                        <h4>LINKS PARA CONTATO</h4>
+                    </span>
+                    <a href="https://www.linkedin.com/in/maahsilvva12/">
+                        <ion-icon size="large" name="logo-linkedin"></ion-icon>
+                    </a>
+
+                    <a href="http://wa.me/5511982993672">
+                        <ion-icon size="large" name="logo-whatsapp"></ion-icon>
+                    </a>
+
+                    <a href="https://www.facebook.com/maahsilva.marys/">
+                        <ion-icon size="large" name="logo-facebook"></ion-icon>
+                    </a>
+
+                    <a href="https://www.instagram.com/maah_silvva12/">
+                        <ion-icon size="large" name="logo-instagram"></ion-icon>
+                    </a>
+
+                    <a
+                        href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJlHnRjpglrQdLQTjmmmqRhmnltKxJlCdVgdQRXZXQKxZKtChFdTnTfXhVGJQpCZLHBSzfL">
+                        <ion-icon size="large" name="mail-outline"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+        aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var telefoneVar = telefone_input.value;
+        var estadoVar = estado_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+        if (nomeVar == "" || telefoneVar == "" || estadoVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        if (senhaVar != confirmacaoSenhaVar) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "As senhas inseridas devem ser iguais para prosseguir!";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                telefoneServer: telefoneVar,
+                estadoServer: estadoVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>

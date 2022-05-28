@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MGCS | Avaliar</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./dashboards.css">
+    <script src="../js/funcoes.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
+    <!-- <body onload="validarSessao()"> -->
+
+    <div class="janela">
+
+        <div class="header-left">
+
+            <a href="index.html"><img src="../assets/img/semslogan.png"></a>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Estatísticas</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Avaliações</h3>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
+        </div>
+
+        <div class="dash-right">
+
+            <div class="avisos">
+                <div class="container">
+                    <h1>Avaliar</h1>
+                    <div class="div-form">
+                        <form id="form_postagem" method="post" onsubmit="return publicar()">
+                            <label>Selecione a cidade que mais teve interesse em visitar:</label>
+                            <select id="selectCidades">
+                                <option value="recife">Recife</option>
+                                <option value="olinda">Olinda</option>
+                                <option value="porto">Porto de Galinhas</option>
+                                <option value="ilha">Ilha de Itamaracá</option>
+                            </select> <br><br>
+                            <br>
+                            <label>
+                                Escreva um breve comentário do que achou:
+                                <br>
+                                <textarea name="comentario" id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                            </label>
+                            <br>
+                            <button>Enviar</button>
+                        </form>
+                    </div>
+                    <h1>Histórico de Avaliações</h1>
+                    <div class="div-results">
+                        <div id="feed_container" class="feed-container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- MODAL -->
+            <!-- <div id="div_modal" class="div-modal">
+                <div id="modal_backdrop" onclick="fecharModal()" class="modal-backdrop">
+                </div>
+                <div id="modal_container" class="modal-container">
+                    <button class="btn-fechar-modal" onclick="fecharModal()">X</button>
+                </div>
+            </div> -->
+
+            <!-- AGUARDAR -->
+            <!-- <div id="div_aguardar" class="div-aguardar">
+                <img src="./assets/aguarde-pink3.gif" id="img_aguarde">
+            </div>  -->
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
+
+<script>
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+    function publicar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var corpo = {
+            selectCidades: form_postagem.selectCidades.value,
+            comentario: form_postagem.comentario.value
+        }
+
+        fetch(`/avisos/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "/dashboard/mural.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+    function editar(idAvaliacao) {
+        sessionStorage.ID_POSTAGEM_EDITANDO = idAvaliacao;
+        console.log("cliquei em editar - " + idAvaliacao);
+        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAvaliacao);
+        window.location = "/dashboard/edicao-aviso.html"
+
+    }
+
+    function deletar(idAvaliacao) {
+        console.log("Criar função de apagar post escolhido - ID" + idAvaliacao);
+        fetch(`/avisos/deletar/${idAvaliacao}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/dashboard/mural.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function atualizarFeed() {
+        //aguardar();
+        fetch("/avisos/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                        var spanselectCidades = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var divcomentario = document.createElement("div");
+                        var divButtons = document.createElement("div");
+                        var btnEditar = document.createElement("button");
+                        var btnDeletar = document.createElement("button");
+
+
+                        spanID.innerHTML = "ID: <b>" + publicacao.idAvaliacao + "</b>";
+                        spanselectCidades.innerHTML = "Cidade: <b>" + publicacao.selectCidades + "</b>";
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
+                        divcomentario.innerHTML = "Comentário: <b>" + publicacao.comentario + "</b>";
+                        btnEditar.innerHTML = "Editar";
+                        btnDeletar.innerHTML = "Deletar";
+
+                        divPublicacao.className = "publicacao";
+                        spanselectCidades.id = "inputNumero" + publicacao.idAvaliacao;
+                        spanNome.className = "publicacao-nome";
+                        spanselectCidades.className = "publicacao-selectCidades";
+                        divcomentario.className = "publicacao-comentario";
+
+                        divButtons.className = "div-buttons"
+
+                        btnEditar.className = "publicacao-btn-editar"
+                        btnEditar.id = "btnEditar" + publicacao.idAvaliacao;
+                        btnEditar.setAttribute("onclick", `editar(${publicacao.idAvaliacao})`);
+
+                        btnDeletar.className = "publicacao-btn-editar"
+                        btnDeletar.id = "btnDeletar" + publicacao.idAvaliacao;
+                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAvaliacao})`);
+
+                        divPublicacao.appendChild(spanID);
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanselectCidades);
+                        divPublicacao.appendChild(divcomentario);
+                        divPublicacao.appendChild(divButtons);
+                        divButtons.appendChild(btnEditar);
+                        divButtons.appendChild(btnDeletar);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+
+    function testar() {
+        aguardar();
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
+
+        var divResultado = document.getElementById("div_feed");
+
+        divResultado.appendChild(document.createTextNode(formulario.get("comentario")));
+        divResultado.innerHTML = formulario.get("comentario");
+
+        finalizarAguardar();
+
+        return false;
+    }
+
+</script>
