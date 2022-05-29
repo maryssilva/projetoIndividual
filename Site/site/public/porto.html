@@ -41,15 +41,23 @@
 
     <div class="banner">
         <div class="historia">
-            <p>A segunda vez que viajei para Pernambuco foi um pouco mais recente, há dois anos atrás, em uma experiência maravilhosa ao lado da minha família. Meus pais também nascidos em São Paulo têm o sangue pernambucano que corre forte em suas veias, cada ida à essa perfeição de estado é como se ficasse uma parte de nós por lá, pois sempre queremos voltar mais e mais vezes.</p>
+            <p>Porto de Galinhas é a cidade conhecida por suas piscinas naturais, a Praia de Muro Alto e suas referências ao frevo, essa é de longe a cidade que eu mais gosto de Pernambuco por ser uma cidade muito tranquila e também muito bonita. As cores, formatos, os barcos, são as coisas mais maravilhosas que já vi.</p>
             <button type="button" onclick="Mudarestado('mostrar')">AVALIE SÓ</button>
         </div>
+
         <div class="carrossel" id="mostrar" style="display: none">
             <div class="container" id="img">
-                <img src="./assets/viagem/9.jpg">
-                <img src="./assets/viagem/10.jpg">
-                <img src="./assets/viagem/11.jpg">
-                <img src="./assets/viagem/08.jpg">
+                <img src="./assets/viagem/porto1.jpg">
+                <img src="./assets/viagem/porto2.jpg">
+                <img src="./assets/viagem/porto3.jpg">
+                <img src="./assets/viagem/porto4.jpg">
+                <img src="./assets/viagem/porto5.jpg">
+                <img src="./assets/viagem/porto6.jpg">
+                <img src="./assets/viagem/porto7.jpg">
+                <img src="./assets/viagem/porto8.jpeg">
+                <img src="./assets/viagem/porto9.jpeg">
+                <img src="./assets/viagem/porto10.jpeg">
+                <img src="./assets/viagem/porto11.jpeg">
             </div>
         </div>
     </div>
@@ -95,8 +103,17 @@
 <script>
     const imgs = document.getElementById("img");
     const img = document.querySelectorAll("#img img");
-
+    
     let i = 0;
+    
+    function Mudarestado(el) {
+        var display = document.getElementById(el).style.display;
+
+        if (display == "none")
+            document.getElementById(el).style.display = 'block';
+        else
+            document.getElementById(el).style.display = 'none';
+    }
 
     function carrossel() {
         i++
@@ -108,14 +125,5 @@
         imgs.style.transform = `translateX(${-i * 975}px)`;
     }
 
-    setInterval(carrossel, 2000);
-
-    function Mudarestado(el) {
-        var display = document.getElementById(el).style.display;
-
-        if (display == "none")
-            document.getElementById(el).style.display = 'block';
-        else
-            document.getElementById(el).style.display = 'none';
-    }
+    setInterval(carrossel, 5000);
 </script>

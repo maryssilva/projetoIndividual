@@ -41,15 +41,34 @@
 
     <div class="banner">
         <div class="historia">
-            <p>A segunda vez que viajei para Pernambuco foi um pouco mais recente, há dois anos atrás, em uma experiência maravilhosa ao lado da minha família. Meus pais também nascidos em São Paulo têm o sangue pernambucano que corre forte em suas veias, cada ida à essa perfeição de estado é como se ficasse uma parte de nós por lá, pois sempre queremos voltar mais e mais vezes.</p>
+            <p>Ilha de Itamaracá, .</p>
             <button type="button" onclick="Mudarestado('mostrar')">AVALIE SÓ</button>
         </div>
+
         <div class="carrossel" id="mostrar" style="display: none">
             <div class="container" id="img">
-                <img src="./assets/viagem/00008.jpg">
-                <img src="./assets/viagem/0008.jpg">
-                <img src="./assets/viagem/008.jpg">
-                <img src="./assets/viagem/08.jpg">
+                <img src="./assets/viagem/ilha1.jpg">
+                <img src="./assets/viagem/ilha2.jpg">
+                <img src="./assets/viagem/ilha3.jpg">
+                <img src="./assets/viagem/ilha4.jpg">
+                <img src="./assets/viagem/ilha5.jpg">
+                <img src="./assets/viagem/ilha6.jpg">
+                <img src="./assets/viagem/ilha7.jpg">
+                <img src="./assets/viagem/ilha8.jpg">
+                <img src="./assets/viagem/ilha9.jpg">
+                <img src="./assets/viagem/ilha10.jpg">
+                <img src="./assets/viagem/ilha11.jpg">
+                <img src="./assets/viagem/ilha12.jpg">
+                <img src="./assets/viagem/ilha13.jpg">
+                <img src="./assets/viagem/ilha14.jpg">
+                <img src="./assets/viagem/ilha15.jpg">
+                <img src="./assets/viagem/ilha16.jpg">
+                <img src="./assets/viagem/ilha17.jpg">
+                <img src="./assets/viagem/ilha18.jpg">
+                <img src="./assets/viagem/ilha19.jpg">
+                <img src="./assets/viagem/ilha20.jpg">
+                <img src="./assets/viagem/ilha21.jpeg">
+                <img src="./assets/viagem/ilha22.jpeg">
             </div>
         </div>
     </div>
@@ -98,6 +117,15 @@
 
     let i = 0;
 
+    function Mudarestado(el) {
+        var display = document.getElementById(el).style.display;
+
+        if (display == "none")
+            document.getElementById(el).style.display = 'block';
+        else
+            document.getElementById(el).style.display = 'none';
+    }
+
     function carrossel() {
         i++
 
@@ -109,13 +137,4 @@
     }
 
     setInterval(carrossel, 2000);
-
-    function Mudarestado(el) {
-        var display = document.getElementById(el).style.display;
-
-        if (display == "none")
-            document.getElementById(el).style.display = 'block';
-        else
-            document.getElementById(el).style.display = 'none';
-    }
 </script>

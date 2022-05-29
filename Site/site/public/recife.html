@@ -41,53 +41,36 @@
 
     <div class="banner">
         <div class="historia">
-            <p>A segunda vez que viajei para Pernambuco foi um pouco mais recente, há dois anos atrás, em uma experiência maravilhosa ao lado da minha família. Meus pais também nascidos em São Paulo têm o sangue pernambucano que corre forte em suas veias, cada ida à essa perfeição de estado é como se ficasse uma parte de nós por lá, pois sempre queremos voltar mais e mais vezes.</p>
+            <p>Recife é a cidade que a maioria dos meus parentes moram, sempre que viajamos para Pernambuco é lá que
+                ficamos acomodados, porém, é um pouco difícil ficar somente nessa cidade, visto que Pernambuco inteiro é
+                maravilhoso. Ainda em Recife, conheci diversos lugares maravilhosos, como o Marco Zero, Parque das
+                Esculturas, Praia de Boa Viagem, etc. Então, separei algumas fotos de Recife que eu mesmo tirei para
+                mostrar.</p>
             <button type="button" onclick="Mudarestado('mostrar')">AVALIE SÓ</button>
         </div>
+
         <div class="carrossel" id="mostrar" style="display: none">
             <div class="container" id="img">
-                <img src="./assets/viagem/1.jpg">
-                <img src="./assets/viagem/2.jpg">
-                <img src="./assets/viagem/3.jpg">
-                <img src="./assets/viagem/4.jpg">
+                <img src="./assets/viagem/recife1.jpg">
+                <img src="./assets/viagem/recife2.jpeg">
+                <img src="./assets/viagem/recife3.jpeg">
+                <img src="./assets/viagem/recife4.jpeg">
+                <img src="./assets/viagem/recife5.jpg">
+                <img src="./assets/viagem/recife6.jpg">
+                <img src="./assets/viagem/recife7.jpg">
+                <img src="./assets/viagem/recife8.jpg">
+                <img src="./assets/viagem/recife9.jpg">
+                <img src="./assets/viagem/recife10.jpg">
+                <img src="./assets/viagem/recife11.jpg">
+                <img src="./assets/viagem/recife12.jpg">
+                <img src="./assets/viagem/recife13.jpeg">
+                <img src="./assets/viagem/recife14.jpeg">
+                <img src="./assets/viagem/recife15.jpeg">
+                <img src="./assets/viagem/recife16.jpeg">
+                <img src="./assets/viagem/recife17.jpeg">
             </div>
         </div>
     </div>
-
-    <footer>
-        <div class="content-footer">
-            <div class="container">
-                <h4>&hearts; Feito por uma aluna nordestina da SP Tech 2022 &copy;</h4>
-                <div class="links"><span>
-                        <h4>LINKS PARA CONTATO</h4>
-                    </span>
-                    <a href="https://www.linkedin.com/in/maahsilvva12/">
-                        <ion-icon size="large" name="logo-linkedin"></ion-icon>
-                    </a>
-
-                    <a href="http://wa.me/5511982993672">
-                        <ion-icon size="large" name="logo-whatsapp"></ion-icon>
-                    </a>
-
-                    <a href="https://www.facebook.com/maahsilva.marys/">
-                        <ion-icon size="large" name="logo-facebook"></ion-icon>
-                    </a>
-
-                    <a href="https://www.instagram.com/maah_silvva12/">
-                        <ion-icon size="large" name="logo-instagram"></ion-icon>
-                    </a>
-
-                    <a
-                        href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJlHnRjpglrQdLQTjmmmqRhmnltKxJlCdVgdQRXZXQKxZKtChFdTnTfXhVGJQpCZLHBSzfL">
-                        <ion-icon size="large" name="mail-outline"></ion-icon>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
@@ -97,6 +80,15 @@
     const img = document.querySelectorAll("#img img");
 
     let i = 0;
+
+    function Mudarestado(el) {
+        var display = document.getElementById(el).style.display;
+
+        if (display == "none")
+            document.getElementById(el).style.display = 'block';
+        else
+            document.getElementById(el).style.display = 'none';
+    }
 
     function carrossel() {
         i++
@@ -109,13 +101,4 @@
     }
 
     setInterval(carrossel, 5000);
-
-    function Mudarestado(el) {
-        var display = document.getElementById(el).style.display;
-
-        if (display == "none")
-            document.getElementById(el).style.display = 'block';
-        else
-            document.getElementById(el).style.display = 'none';
-    }
 </script>
