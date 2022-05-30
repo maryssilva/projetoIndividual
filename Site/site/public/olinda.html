@@ -94,11 +94,21 @@
 </html>
 
 <script>
-    var imgs =
-                `<img src="./assets/viagem/olinda1.jpg">`
-                `<img src="./assets/viagem/olinda2.jpg">`
-                `<img src="./assets/viagem/olinda3.jp3g">`
-                `<img src="./assets/viagem/recife1.jpg">`
+    var imgs = [`<img src="./assets/viagem/olinda1.jpg">`, `<img src="./assets/viagem/olinda2.jpg">`, `<img src="./assets/viagem/olinda3.jpeg">`, `<img src="./assets/viagem/recife1.jpg">`]
+
+    var slider = ['1', 'banana', 'gostosa']
+    var minhaFrase = ''
+
+    for (i = 0; i < slider.length; i++) {
+        console.log(`Eu gosto de ${slider[i]}`)
+        minhaFrase += slider[i]
+    }
+
+    console.log(minhaFrase)
+
+    console.log(slider)
+
+    console.log(imgs)
                 
     function Mudarestado(el) {
         var display = document.getElementById(el).style.display;
@@ -111,12 +121,18 @@
 
     function carrossel() {
 
-        for (i = 0; i < slider.length; i++) {
-            slider.push(imgs.src);
-        }
+        var mexer = document.getElementById("img")
 
-        slider.style.transform = `translateX(${-i * 975}px)`;
+        console.log("chamei o carrossel")
+
+        for (i = 0; i < slider.length; i++) {
+            mexer.innerHTML += imgs[i]
+        }
+        
+        mexer.style.transform = `translateX(${-i * 975}px)`;
     }
 
-    setInterval(carrossel, 2000);
+    carrossel()
+
+    /* setInterval(carrossel(), 2000); */
 </script>
