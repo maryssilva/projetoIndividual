@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MGCS | Estatísticas</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../assets/img/icone.png">
     <link rel="stylesheet" href="dashboards.css">
     <script src="../js/funcoes.js"></script>
 
@@ -17,46 +17,62 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-    <!-- scripts do Chart.js -->
     <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
 
 </head>
 
 <body onload="validarSessao(), atualizarFeed()">
 
-    <div class="janela">
-        <div class="header-left">
-            <h1>AcquaTec</h1>
-
+    <div class="header">
+        <div class="container">
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-
-                <h3>Estatísticas</h3>
-
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avaliações</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
+            <a href="../index.html"><img src="../assets/img/semslogan.png"></a>
+            <ul class="navbar">
+                <div class="dropdown">
+                    <button class="dropbtn">Perambular<ion-icon class="dropicon" name="caret-down-outline">
+                        </ion-icon>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="../recife.html">Recife</a>
+                        <a href="../olinda.html">Olinda</a>
+                        <a href="../porto.html">Porto de Galinhas</a>
+                        <a href="../ilha.html">Ilha de Itamaracá</a>
+                    </div>
+                </div>
+                <li><a href="./dashboard.html">Estatísticas</a></li>
+                <li class="agora"><a href="./mural.html">Avaliar</a></li>
+                <li class="borda" onclick="limparFormulario()"><a href="../login.html">Logout</a></li>
+            </ul>
         </div>
+    </div>
 
+    <div class="janela">
+        <div class="regua">
+            <div class="item-regua otimo">
+                <h2>Ótimo</h2>
+                <h4>30 votos</h4>
+            </div>
+            <div class="item-regua bom">
+                <h2>Bom</h2>
+                <h4>20 votos</h4>
+            </div>
+            <div class="item-regua regular">
+                <h2>Regular</h2>
+                <h4>15 votos</h4>
+            </div>
+            <div class="item-regua ruim">
+                <h2>Ruim</h2>
+                <h4>10 votos</h4>
+            </div>
+            <div class="item-regua muito-ruim">
+                <h2>Muito Ruim</h2>
+                <h4>5 votos</h4>
+            </div>
+        </div>
         <div class="dash">
+            
             <div class="btns-dash">
                 <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
                 <button class="btn-chart btn-pink" onclick="obterDadosGrafico(1)">Aquario 1</button>
@@ -75,7 +91,8 @@
         </div>
     </div>
 
-
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
@@ -230,10 +247,10 @@
                     // tirando e colocando valores no gráfico
                     dados.labels.shift(); // apagar o primeiro
                     dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-                    
+
                     dados.datasets[0].data.shift();  // apagar o primeiro de umidade
                     dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-                    
+
                     dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
                     dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
 

@@ -20,37 +20,40 @@
 
 <body onload="validarSessao(), atualizarFeed()">
     <!-- <body onload="validarSessao()"> -->
-        <div class="header">
-            <div class="container">
-                <div class="hello">
-                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-                </div>
-                <a href="../index.html"><img src="../assets/img/semslogan.png"></a>
-                <ul class="navbar">
-                    <div class="dropdown">
-                        <button class="dropbtn">Perambular<ion-icon class="dropicon" name="caret-down-outline">
-                            </ion-icon>
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="../recife.html">Recife</a>
-                            <a href="../olinda.html">Olinda</a>
-                            <a href="../porto.html">Porto de Galinhas</a>
-                            <a href="../ilha.html">Ilha de Itamaracá</a>
-                        </div>
-                    </div>
-                    <li><a href="./dashboard.html">Estatísticas</a></li>
-                    <li class="agora"><a href="./mural.html">Avaliar</a></li>
-                    <li class="borda" onclick="limparFormulario()"><a href="../login.html">Logout</a></li>
-                </ul>
+    <div class="header">
+        <div class="container">
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
+            <a href="../index.html"><img src="../assets/img/semslogan.png"></a>
+            <ul class="navbar">
+                <div class="dropdown">
+                    <button class="dropbtn">Perambular<ion-icon class="dropicon" name="caret-down-outline">
+                        </ion-icon>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="../recife.html">Recife</a>
+                        <a href="../olinda.html">Olinda</a>
+                        <a href="../porto.html">Porto de Galinhas</a>
+                        <a href="../ilha.html">Ilha de Itamaracá</a>
+                    </div>
+                </div>
+                <li><a href="./dashboard.html">Estatísticas</a></li>
+                <li class="agora"><a href="./mural.html">Avaliar</a></li>
+                <li class="borda" onclick="limparFormulario()"><a href="../login.html">Logout</a></li>
+            </ul>
         </div>
-    <div class="janela"> 
+    </div>
+
+    <div class="janela">
 
         <div class="dash-right">
 
             <div class="avisos">
                 <div class="container">
-                    <div><h1 style="color: #E50508;">Avaliar</h1></div>
+                    <div>
+                        <h1 style="color: #E50508;">Avaliar</h1>
+                    </div>
                     <div class="div-form">
                         <form id="form_postagem" method="post" onsubmit="return publicar()">
                             <label>Selecione a cidade que mais teve interesse em visitar:</label>
@@ -70,31 +73,15 @@
                             <button>Enviar</button>
                         </form>
                     </div>
-                    <div><h1 style="color: #E50508;">Histórico de Avaliações</h1></div>
+                    <div>
+                        <h1 style="color: #E50508;">Histórico de Avaliações</h1>
+                    </div>
                     <div class="div-results">
                         <div id="feed_container" class="feed-container">
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-            <!-- MODAL -->
-            <!-- <div id="div_modal" class="div-modal">
-                <div id="modal_backdrop" onclick="fecharModal()" class="modal-backdrop">
-                </div>
-                <div id="modal_container" class="modal-container">
-                    <button class="btn-fechar-modal" onclick="fecharModal()">X</button>
-                </div>
-            </div> -->
-
-            <!-- AGUARDAR -->
-            <!-- <div id="div_aguardar" class="div-aguardar">
-                <img src="./assets/aguarde-pink3.gif" id="img_aguarde">
-            </div>  -->
-
         </div>
     </div>
 
