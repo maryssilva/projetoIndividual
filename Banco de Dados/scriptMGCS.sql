@@ -27,3 +27,9 @@ CREATE TABLE avaliacao(
 SELECT * FROM usuario;
 SELECT * FROM cidades;
 SELECT * FROM avaliacao;
+
+SELECT cidade AS 'Cidade', COUNT(fkCidade) AS 'Avaliações'
+FROM avaliacao
+JOIN cidades
+ON idCidades = fkCidade
+GROUP BY cidade;
