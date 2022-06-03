@@ -30,8 +30,8 @@
                         <a href="ilha.html">Ilha de Itamaracá</a>
                     </div>
                 </div>
-                <li><a href="chartjs.html">Dashboards</a></li>
-                <li><a href="avaliar.html">Avaliar</a></li>
+                <li><a href="./dashboard/dashboard.html">Dashboards</a></li>
+                <li><a href="./dashboard/mural.html">Avaliar</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li class="borda agora"><a href="cadastro.html">Cadastro</a></li>
             </ul>
@@ -44,7 +44,7 @@
                 <span id="mensagem_erro"></span>
             </div>
         </div>
-
+        
         <div class="container">
             <div class="frevo">
                 <img src="./assets/img/frevo.png">
@@ -105,7 +105,7 @@
                 </form>
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    <img src="https://icon-library.com/images/progress-icon-gif/progress-icon-gif-1.jpg" id="loading-gif">
                 </div>
                 <div id="div_erros_login"></div>
 
@@ -173,7 +173,7 @@
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 3000)
         }
 
         if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
@@ -183,7 +183,7 @@
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 3000)
         }
 
         if (senhaVar != confirmacaoSenhaVar) {
@@ -193,7 +193,7 @@
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 3000)
         }
 
         // Enviando o valor da nova input
@@ -217,8 +217,6 @@
 
             if (resposta.ok) {
                 cardErro.style.display = "block";
-
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
                     window.location = "login.html";

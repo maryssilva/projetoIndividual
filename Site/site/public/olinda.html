@@ -31,8 +31,8 @@
                         <a href="ilha.html">Ilha de Itamaracá</a>
                     </div>
                 </div>
-                <li><a href="chartjs.html">Dashboards</a></li>
-                <li><a href="avaliar.html">Avaliar</a></li>
+                <li><a href="./dashboard/dashboard.html">Dashboards</a></li>
+                <li><a href="./dashboard/mural.html">Avaliar</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li class="borda"><a href="cadastro.html">Cadastro</a></li>
             </ul>
@@ -45,12 +45,14 @@
                 experiência maravilhosa ao lado da minha família. Meus pais também nascidos em São Paulo têm o sangue
                 pernambucano que corre forte em suas veias, cada ida à essa perfeição de estado é como se ficasse uma
                 parte de nós por lá, pois sempre queremos voltar mais e mais vezes.</p>
-            <button type="button" onclick="Mudarestado('mostrar')">AVALIE SÓ</button>
+            <button type="button" onclick="Mudarestado('mostrar')"><span id="avalieoufeche">AVALIE SÓ</span></button>
         </div>
-        
+
         <div class="carrossel" id="mostrar" style="display: none">
             <div class="container" id="img">
-          
+                <img class="img-slide" src="./assets/viagem/olinda1.jpg">
+                <img class="img-slide" src="./assets/viagem/olinda2.jpg">
+                <img class="img-slide" src="./assets/viagem/olinda3.jpeg">
             </div>
         </div>
     </div>
@@ -94,45 +96,35 @@
 </html>
 
 <script>
-    var imgs = [`<img src="./assets/viagem/olinda1.jpg">`, `<img src="./assets/viagem/olinda2.jpg">`, `<img src="./assets/viagem/olinda3.jpeg">`, `<img src="./assets/viagem/recife1.jpg">`]
+    const imgs = document.getElementById("img");
+    const img = document.querySelectorAll("#img img");
 
-    var slider = ['1', 'banana', 'gostosa']
-    var minhaFrase = ''
+    let i = 0;
 
-    for (i = 0; i < slider.length; i++) {
-        console.log(`Eu gosto de ${slider[i]}`)
-        minhaFrase += slider[i]
-    }
-
-    console.log(minhaFrase)
-
-    console.log(slider)
-
-    console.log(imgs)
-                
     function Mudarestado(el) {
         var display = document.getElementById(el).style.display;
 
-        if (display == "none")
+        if (display == "none") {
             document.getElementById(el).style.display = 'block';
-        else
-            document.getElementById(el).style.display = 'none';
-    }
-
-    function carrossel() {
-
-        var mexer = document.getElementById("img")
-
-        console.log("chamei o carrossel")
-
-        for (i = 0; i < slider.length; i++) {
-            mexer.innerHTML += imgs[i]
+            avalieoufeche.innerHTML = `FECHAR`
         }
-        
-        mexer.style.transform = `translateX(${-i * 975}px)`;
+        else {
+            document.getElementById(el).style.display = 'none';
+            avalieoufeche.innerHTML = `AVALIE SÓ`
+        }
+
+        passarCarrossel()
     }
 
-    carrossel()
+    function passarCarrossel() {
+        i++
 
-    /* setInterval(carrossel(), 2000); */
+        if (i > img.length - 1) {
+            i = 0;
+        }
+
+        imgs.style.transform = `translateX(${-i * 975}px)`;
+    }
+
+    setInterval(passarCarrossel, 1000);
 </script>

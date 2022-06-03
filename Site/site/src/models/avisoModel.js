@@ -5,16 +5,18 @@ function listar() {
     var instrucao = `
         SELECT 
             a.idAvaliacao,
-            a.fkCidade,
             a.comentario,
             a.fkUsuario,
             u.id AS idUsuario,
             u.nome,
             u.email,
-            u.senha
-        FROM avaliacao a
+            u.senha,
+            c.cidade
+            FROM avaliacao a
             INNER JOIN usuario u
-                ON a.fkUsuario = u.id;
+                ON a.fkUsuario = u.id
+            INNER JOIN cidades c
+                ON a.fkCidade = c.idCidades;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -62,9 +64,9 @@ function listarPorUsuario(idUsuario) {
     return database.executar(instrucao);
 }
 
-function publicar(selectCidades, comentario, idUsuario) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", selectCidades, comentario, idUsuario);
-    var instrucao = `INSERT INTO cidades (cidade) VALUES ('${selectCidades}'); INSERT INTO avaliacao (fkCidade, comentario, fkUsuario) VALUES ('1', '${comentario}', ${idUsuario});`;
+function publicar(idCidadeEscolhida, comentario, idUsuario) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", idCidadeEscolhida, comentario, idUsuario);
+    var instrucao = `INSERT INTO avaliacao (fkCidade, comentario, fkUsuario) VALUES ('${idCidadeEscolhida}', '${comentario}', ${idUsuario});`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

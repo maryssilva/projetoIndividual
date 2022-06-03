@@ -69,6 +69,20 @@ function publicar(req, res) {
     var selectCidades = req.body.selectCidades;
     var comentario = req.body.comentario;
     var idUsuario = req.params.idUsuario;
+    var idCidadeEscolhida = req.params.idCidadeEscolhida;
+
+    if (selectCidades == '1') {
+        idCidadeEscolhida = 1
+    }
+    else if (selectCidades == '2') {
+        idCidadeEscolhida = 2
+    }
+    else if (selectCidades == '3') {
+        idCidadeEscolhida = 3
+    }
+    else if (selectCidades == '4') {
+        idCidadeEscolhida = 4
+    }
 
     if (selectCidades == undefined) {
         res.status(400).send("A seleção está indefinida!");

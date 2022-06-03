@@ -2,14 +2,14 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/icone.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MGCS | Avaliar</title>
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./dashboards.css">
+    <link rel="icon" href="../assets/img/icone.png">
+    <link rel="stylesheet" href="./styleMural.css">
     <script src="../js/funcoes.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -18,48 +18,47 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
+<body onload="validarSessao(), atualizarFeed()">
     <!-- <body onload="validarSessao()"> -->
-
-    <div class="janela">
-
-        <div class="header-left">
-
-            <a href="index.html"><img src="../assets/img/semslogan.png"></a>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        <div class="header">
+            <div class="container">
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                </div>
+                <a href="../index.html"><img src="../assets/img/semslogan.png"></a>
+                <ul class="navbar">
+                    <div class="dropdown">
+                        <button class="dropbtn">Perambular<ion-icon class="dropicon" name="caret-down-outline">
+                            </ion-icon>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="../recife.html">Recife</a>
+                            <a href="../olinda.html">Olinda</a>
+                            <a href="../porto.html">Porto de Galinhas</a>
+                            <a href="../ilha.html">Ilha de Itamaracá</a>
+                        </div>
+                    </div>
+                    <li><a href="./dashboard.html">Estatísticas</a></li>
+                    <li class="agora"><a href="./mural.html">Avaliar</a></li>
+                    <li class="borda" onclick="limparFormulario()"><a href="../login.html">Logout</a></li>
+                </ul>
             </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Estatísticas</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Avaliações</h3>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
         </div>
+    <div class="janela"> 
 
         <div class="dash-right">
 
             <div class="avisos">
                 <div class="container">
-                    <h1>Avaliar</h1>
+                    <div><h1 style="color: #E50508;">Avaliar</h1></div>
                     <div class="div-form">
                         <form id="form_postagem" method="post" onsubmit="return publicar()">
                             <label>Selecione a cidade que mais teve interesse em visitar:</label>
                             <select id="selectCidades">
-                                <option value="recife">Recife</option>
-                                <option value="olinda">Olinda</option>
-                                <option value="porto">Porto de Galinhas</option>
-                                <option value="ilha">Ilha de Itamaracá</option>
+                                <option value="1">Recife</option>
+                                <option value="2">Olinda</option>
+                                <option value="3">Porto de Galinhas</option>
+                                <option value="4">Ilha de Itamaracá</option>
                             </select> <br><br>
                             <br>
                             <label>
@@ -71,7 +70,7 @@
                             <button>Enviar</button>
                         </form>
                     </div>
-                    <h1>Histórico de Avaliações</h1>
+                    <div><h1 style="color: #E50508;">Histórico de Avaliações</h1></div>
                     <div class="div-results">
                         <div id="feed_container" class="feed-container">
                         </div>
@@ -100,7 +99,8 @@
     </div>
 
 
-
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 
@@ -213,7 +213,7 @@
 
 
                         spanID.innerHTML = "ID: <b>" + publicacao.idAvaliacao + "</b>";
-                        spanselectCidades.innerHTML = "Cidade: <b>" + publicacao.selectCidades + "</b>";
+                        spanselectCidades.innerHTML = "Cidade: <b>" + publicacao.cidade + "</b>";
                         spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
                         divcomentario.innerHTML = "Comentário: <b>" + publicacao.comentario + "</b>";
                         btnEditar.innerHTML = "Editar";

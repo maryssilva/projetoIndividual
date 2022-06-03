@@ -31,8 +31,8 @@
                         <a href="ilha.html">Ilha de Itamaracá</a>
                     </div>
                 </div>
-                <li><a href="chartjs.html">Dashboards</a></li>
-                <li><a href="avaliar.html">Avaliar</a></li>
+                <li><a href="./dashboard/dashboard.html">Dashboards</a></li>
+                <li><a href="./dashboard/mural.html">Avaliar</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li class="borda"><a href="cadastro.html">Cadastro</a></li>
             </ul>
@@ -84,13 +84,19 @@
     function Mudarestado(el) {
         var display = document.getElementById(el).style.display;
 
-        if (display == "none")
+        if (display == "none") {
             document.getElementById(el).style.display = 'block';
-        else
+            avalieoufeche.innerHTML = `FECHAR`
+        }
+        else {
             document.getElementById(el).style.display = 'none';
+            avalieoufeche.innerHTML = `AVALIE SÓ`
+        }
+
+        passarCarrossel()
     }
 
-    function carrossel() {
+    function passarCarrossel() {
         i++
 
         if (i > img.length - 1) {
@@ -100,5 +106,5 @@
         imgs.style.transform = `translateX(${-i * 975}px)`;
     }
 
-    setInterval(carrossel, 5000);
+    setInterval(passarCarrossel, 1000);
 </script>

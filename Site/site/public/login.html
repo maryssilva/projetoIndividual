@@ -30,8 +30,8 @@
                         <a href="ilha.html">Ilha de Itamaracá</a>
                     </div>
                 </div>
-                <li><a href="chartjs.html">Dashboards</a></li>
-                <li><a href="avaliar.html">Avaliar</a></li>
+                <li><a href="./dashboard/dashboard.html">Dashboards</a></li>
+                <li><a href="./dashboard/mural.html">Avaliar</a></li>
                 <li class="agora"><a href="login.html">Login</a></li>
                 <li class="borda"><a href="cadastro.html">Cadastro</a></li>
             </ul>
@@ -59,7 +59,7 @@
                 </form>
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    <img src="https://www.iforium.com/wp-content/uploads/blue-wheel-loading.gif" id="loading-gif">
                 </div>
 
                 <div id="div_erros_login"></div>
@@ -123,7 +123,7 @@
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 3000)
         }
 
         if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
@@ -133,7 +133,7 @@
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 3000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -163,7 +163,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/mural.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
