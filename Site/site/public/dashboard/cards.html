@@ -136,8 +136,8 @@
         setTimeout(atualizacaoPeriodica, 5000);
     }
 
-    function obterdados(idAquario) {
-        fetch(`/medidas/tempo-real/${idAquario}`)
+    function obterdados(idAvaliacao) {
+        fetch(`/medidas/tempo-real/${idAvaliacao}`)
             .then(resposta => {
 
                 if (resposta.ok) {
@@ -149,7 +149,7 @@
                             temperatura: resposta[0].temperatura,
                         }
 
-                        alertar(resposta[0].temperatura, idAquario);
+                        alertar(resposta[0].temperatura, idAvaliacao);
                     });
                 } else {
 
@@ -162,7 +162,7 @@
 
     }
 
-    function alertar(temperatura, idAquario) {
+    function alertar(temperatura, idAvaliacao) {
         var limites = {
             muito_quente: 23,
             quente: 22,
@@ -196,16 +196,16 @@
 
         var card;
 
-        if (idAquario == 1) {
+        if (idAvaliacao == 1) {
             temp_aquario_1.innerHTML = temperatura + "°C";
             card = card_1
-        } else if (idAquario == 2) {
+        } else if (idAvaliacao == 2) {
             temp_aquario_2.innerHTML = temperatura + "°C";
             card = card_2
-        } else if (idAquario == 3) {
+        } else if (idAvaliacao == 3) {
             temp_aquario_3.innerHTML = temperatura + "°C";
             card = card_3
-        } else if (idAquario == 4) {
+        } else if (idAvaliacao == 4) {
             temp_aquario_4.innerHTML = temperatura + "°C";
             card = card_4
         }

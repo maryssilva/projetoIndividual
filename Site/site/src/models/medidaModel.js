@@ -1,26 +1,25 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(idAvaliacao, limite_linhas) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top ${limite_linhas}
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        momento,
-                        CONVERT(varchar, momento, 108) as momento_grafico
-                    from hist_medicao
-                    where fk_aquario = ${idAquario}
-                    order by id desc`;
+        cidade as cidades, 
+        COUNT(fkCidade) as avaliacoes,
+                    from avaliacao
+                    join cidades
+                    on idCidades = ${idAvaliacao}
+                    goup by cidade`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    from hist_medicao
-                    where fk_aquario = ${idAquario}
+        cidade as cidades, 
+        COUNT(fkCidade) as avaliacoes,
+                    from avaliacao
+                    join cidades
+                    on idCidades = ${idAvaliacao}
+                    goup by cidade
                     order by id desc limit ${limite_linhas}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -31,26 +30,28 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(idAvaliacao) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from hist_medicao where fk_aquario = ${idAquario} 
+        cidade as cidades, 
+        COUNT(fkCidade) as avaliacoes,
+                    from avaliacao
+                    join cidades
+                    on idCidades = ${idAvaliacao}
+                    goup by cidade
                     order by id desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from hist_medicao where fk_aquario = ${idAquario} 
+        cidade as cidades, 
+        COUNT(fkCidade) as avaliacoes,
+                    from avaliacao
+                    join cidades
+                    on idCidades = ${idAvaliacao}
+                    goup by cidade 
                     order by id desc limit 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
