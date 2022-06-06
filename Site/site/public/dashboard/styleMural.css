@@ -132,7 +132,7 @@ a:hover {
     color: #E50508;
 }
 
-.avisos{
+.avisos {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +149,7 @@ a:hover {
     border-radius: 10px;
     border: 1px solid rgba(0, 17, 255, 0);
     border-radius: 10px;
-    top: 0; 
+    top: 0;
     margin-top: 40px;
     margin-bottom: 40px;
 }
@@ -218,7 +218,7 @@ a:hover {
 
 .dash-right .avisos {
     width: 100%;
-    height: 80% ;
+    height: 80%;
     color: white;
 }
 
@@ -249,8 +249,14 @@ a:hover {
     width: 100%;
     color: black;
     border: 3px solid #0E1170;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 15px 0 #0E1170;
+    border-radius: 15px;
+    border: 3px solid #0E1170 rgba(0, 17, 255, 0);
     background-color: white;
     border-radius: 5px;
+    margin-top: 3px;
 }
 
 .dash-right .avisos .div-form button {
@@ -259,6 +265,7 @@ a:hover {
     border-radius: 5px;
     font-weight: 600;
     font-size: 18px;
+    margin-top: 3px;
     padding: 10px 15px;
     color: white;
     background-color: #0E1170;
@@ -299,12 +306,45 @@ select option {
     justify-content: center;
     align-items: stretch;
     color: black;
-    border-bottom: 3px solid #0E1170;
-    padding: 20px;
+    margin: 20px 20px;
+    background-color: beige;
+    border-radius: 6px;
+    /* border: 3px solid #0E1170; */
+    padding-left: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgb(0, 0, 0);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 17, 255, 0);
+    transition: 0.7s;
+}
+
+.publicacao:hover {
+    width: 90%;
+    margin-top: 36px;
+    border-left: 5px solid #E50508;
+    border-radius: 15px;
+    box-shadow: 5px 7px 5px rgb(146, 146, 146);
+    transform: translateY(-10px);
+    background-position: right center;
+}
+
+.publicacao h3 {
+    margin: 0;
 }
 
 .publicacao>*:not(:last-child) {
     padding: 0 0 10px 0;
+}
+
+.titulo {
+    background-image: linear-gradient(to bottom,
+            #757575,
+            #ffffff,
+            #757575);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .div-results {
@@ -312,17 +352,16 @@ select option {
 }
 
 .div-results .feed-container {
-    background-color: beige;
+    background-color: transparent;
     border-radius: 5px;
     margin-bottom: 80px;
-    border: solid #0E1170 2px;
 }
 
-.div-buttons {
+/* .div-buttons {
     display: flex;
     justify-content: flex-end;
 }
 
 .div-buttons>* {
     margin-left: 30px;
-}
+} */

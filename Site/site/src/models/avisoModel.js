@@ -77,6 +77,7 @@ function editar(novoComentario, idAvaliacao) {
         UPDATE avaliacao SET comentario = '${novoComentario}' WHERE idAvaliacao = ${idAvaliacao};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
+
     return database.executar(instrucao);
 }
 

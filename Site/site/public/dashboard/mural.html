@@ -40,7 +40,7 @@
                 </div>
                 <li><a href="./dashboard.html">Estatísticas</a></li>
                 <li class="agora"><a href="./mural.html">Avaliar</a></li>
-                <li class="borda" onclick="limparFormulario()"><a href="../login.html">Logout</a></li>
+                <li class="borda" onclick="limparSessao()">Logout</li>
             </ul>
         </div>
     </div>
@@ -52,7 +52,7 @@
             <div class="avisos">
                 <div class="container">
                     <div>
-                        <h1 style="color: #E50508;">Avaliar</h1>
+                        <h1 class="titulo">Avaliar</h1>
                     </div>
                     <div class="div-form">
                         <form id="form_postagem" method="post" onsubmit="return publicar()">
@@ -74,7 +74,7 @@
                         </form>
                     </div>
                     <div>
-                        <h1 style="color: #E50508;">Histórico de Avaliações</h1>
+                        <h1 class="titulo">Histórico de Avaliações</h1>
                     </div>
                     <div class="div-results">
                         <div id="feed_container" class="feed-container">
@@ -120,14 +120,14 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.alert("Comentário realizado com sucesso pelo usuário de ID: " + idUsuario + "!");
                 window.location = "/dashboard/mural.html";
                 limparFormulario();
                 finalizarAguardar();
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                throw ("Houve um erro ao tentar comentar! Código da resposta: " + resposta.status);
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
@@ -140,14 +140,13 @@
 
     function editar(idAvaliacao) {
         sessionStorage.ID_POSTAGEM_EDITANDO = idAvaliacao;
-        console.log("cliquei em editar - " + idAvaliacao);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAvaliacao);
+        console.log("Edição - " + idAvaliacao);
+        window.alert("Você será redirecionado para a página de edição do comentário de ID: " + idAvaliacao);
         window.location = "/dashboard/edicao-aviso.html"
-
     }
 
     function deletar(idAvaliacao) {
-        console.log("Criar função de apagar post escolhido - ID" + idAvaliacao);
+        console.log("Criar função de apagar comentário escolhido - ID" + idAvaliacao);
         fetch(`/avisos/deletar/${idAvaliacao}`, {
             method: "DELETE",
             headers: {
@@ -156,12 +155,12 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.alert("Comentário deletado com sucesso pelo usuário de e-mail: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
                 window.location = "/dashboard/mural.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                throw ("Houve um erro ao tentar comentar! Código da resposta: " + resposta.status);
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
@@ -198,13 +197,12 @@
                         var btnEditar = document.createElement("button");
                         var btnDeletar = document.createElement("button");
 
-
-                        spanID.innerHTML = "ID: <b>" + publicacao.idAvaliacao + "</b>";
-                        spanselectCidades.innerHTML = "Cidade: <b>" + publicacao.cidade + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
+                        spanNome.innerHTML = "<h3>" + publicacao.nome + "</h3>";
+                        spanNome.style.color="#E50508"
+                        spanselectCidades.innerHTML = "Cidade selecionada: <b>" + publicacao.cidade + "</b>";
                         divcomentario.innerHTML = "Comentário: <b>" + publicacao.comentario + "</b>";
-                        btnEditar.innerHTML = "Editar";
-                        btnDeletar.innerHTML = "Deletar";
+                        /* btnEditar.innerHTML = "Editar";
+                        btnDeletar.innerHTML = "Deletar"; */
 
                         divPublicacao.className = "publicacao";
                         spanselectCidades.id = "inputNumero" + publicacao.idAvaliacao;
@@ -212,23 +210,23 @@
                         spanselectCidades.className = "publicacao-selectCidades";
                         divcomentario.className = "publicacao-comentario";
 
-                        divButtons.className = "div-buttons"
+                        /* divButtons.className = "div-buttons" */
 
-                        btnEditar.className = "publicacao-btn-editar"
+                        /* btnEditar.className = "publicacao-btn-editar"
                         btnEditar.id = "btnEditar" + publicacao.idAvaliacao;
                         btnEditar.setAttribute("onclick", `editar(${publicacao.idAvaliacao})`);
 
                         btnDeletar.className = "publicacao-btn-editar"
                         btnDeletar.id = "btnDeletar" + publicacao.idAvaliacao;
-                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAvaliacao})`);
+                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAvaliacao})`); */
 
                         divPublicacao.appendChild(spanID);
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(spanselectCidades);
                         divPublicacao.appendChild(divcomentario);
                         divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
+                       /*  divButtons.appendChild(btnEditar);
+                        divButtons.appendChild(btnDeletar); */
                         feed.appendChild(divPublicacao);
                     }
 
@@ -257,5 +255,4 @@
 
         return false;
     }
-
 </script>

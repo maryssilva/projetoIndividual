@@ -40,7 +40,7 @@
                 </div>
                 <li><a href="./dashboard.html">Estatísticas</a></li>
                 <li class="agora"><a href="./mural.html">Avaliar</a></li>
-                <li class="borda" onclick="limparFormulario()"><a href="../login.html">Logout</a></li>
+                <li class="borda" onclick="limparSessao()">Logout</li>
             </ul>
         </div>
     </div>
@@ -82,12 +82,12 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                descricao: textarea_descricao.value
+                comentario: textarea_descricao.value
             })
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.alert("Post atualizado com sucesso pelo usuário de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
                 window.location = "/dashboard/mural.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
@@ -98,5 +98,4 @@
             console.log(`#ERRO: ${resposta}`);
         });
     }
-
 </script>

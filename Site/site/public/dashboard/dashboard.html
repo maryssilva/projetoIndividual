@@ -54,30 +54,30 @@
             <div class="regua">
                 <div class="item-regua otimo">
                     <h2 id="h2Otimo"></h2>
-                    <h4>30 votos</h4>
+                    <h4>21 - 30 votos</h4>
                 </div>
                 <div class="item-regua bom">
                     <h2 id="h2Bom"></h2>
-                    <h4>20 votos</h4>
+                    <h4>16 - 20 votos</h4>
                 </div>
                 <div class="item-regua regular">
                     <h2 id="h2Regular"></h2>
-                    <h4>15 votos</h4>
+                    <h4>11 - 15 votos</h4>
                 </div>
                 <div class="item-regua ruim">
                     <h2 id="h2Ruim"></h2>
-                    <h4>10 votos</h4>
+                    <h4>6 - 10 votos</h4>
                 </div>
                 <div class="item-regua muito-ruim">
                     <h2 id="h2MuitoRuim"></h2>
-                    <h4>5 votos</h4>
+                    <h4>0 - 5 votos</h4>
                 </div>
             </div>
             <div class="dash" onclick="obterDadosGrafico()">
                 <div>
-                    <h2 class="tituloGraficos">
+                    <h1 class="tituloGraficos">
                         <span id="tituloAvaliacao">Avaliações Gerais</span>
-                    </h2>
+                    </h1>
                 </div>
                 <div class="graph">
                     <canvas id="canvas_grafico"></canvas>
@@ -159,32 +159,32 @@
                 {
                     yAxisID: 'y-recife',
                     label: 'Recife',
-                    borderColor: '#FFF',
-                    backgroundColor: '#E50508',
+                    borderColor: '#000',
+                    backgroundColor: 'beige',
                     fill: true,
                     data: []
                 },
                 {
                     yAxisID: 'y-olinda',
                     label: 'Olinda',
-                    borderColor: '#FFF',
-                    backgroundColor: '#0E1170',
+                    borderColor: '#000',
+                    backgroundColor: 'beige',
                     fill: true,
                     data: []
                 },
                 {
                     yAxisID: 'y-porto',
                     label: 'Porto de Galinhas',
-                    borderColor: '#FFF',
-                    backgroundColor: '#FBFF00',
+                    borderColor: '#000',
+                    backgroundColor: 'beige',
                     fill: true,
                     data: []
                 },
                 {
                     yAxisID: 'y-ilha',
                     label: 'Ilha de Itamaracá',
-                    borderColor: '#FFF',
-                    backgroundColor: '#1EFF00',
+                    borderColor: '#000',
+                    backgroundColor: 'beige',
                     fill: true,
                     data: []
                 }
@@ -194,15 +194,32 @@
         var dado = []
 
         for (i = 0; i < resposta.length; i++) {
-            
+
             var registro = resposta[i];
             dado.push(registro.Avaliações)
+
+            if (registro.Avaliações <= 5) {
+                dados.datasets[i].backgroundColor = '#E50508'
+            }
+            else if (registro.Avaliações <= 10) {
+                dados.datasets[i].backgroundColor = '#FF9900'
+            }
+            else if (registro.Avaliações <= 15) {
+                dados.datasets[i].backgroundColor = '#FBFF00'
+            }
+            else if (registro.Avaliações <= 20) {
+                dados.datasets[i].backgroundColor = '#0059FF'
+            }
+            else {
+                dados.datasets[i].backgroundColor = '#16B900'
+            }
         }
+
         dados.datasets[0].data.push(dado[0]);
         dados.datasets[1].data.push(dado[1]);
         dados.datasets[2].data.push(dado[2]);
         dados.datasets[3].data.push(dado[3]);
-        dados.labels.push("Cidades"); 
+        dados.labels.push("Cidades");
 
         console.log(JSON.stringify(dados));
 
@@ -216,7 +233,7 @@
                 stacked: false,
                 title: {
                     display: false,
-                    text: 'Dados capturados'
+                    text: 'Avaliações'
                 },
                 scales: {
                     yAxes: [{
@@ -226,7 +243,7 @@
                         id: 'y-recife',
                         ticks: {
                             beginAtZero: true,
-                            max: 40,
+                            max: 30,
                             min: 0
                         }
                     }, {
@@ -236,7 +253,7 @@
                         id: 'y-olinda',
                         ticks: {
                             beginAtZero: false,
-                            max: 40,
+                            max: 30,
                             min: 0
                         }
                     }, {
@@ -246,7 +263,7 @@
                         id: 'y-porto',
                         ticks: {
                             beginAtZero: false,
-                            max: 40,
+                            max: 30,
                             min: 0
                         }
                     }, {
@@ -256,7 +273,7 @@
                         id: 'y-ilha',
                         ticks: {
                             beginAtZero: false,
-                            max: 40,
+                            max: 30,
                             min: 0
                         }
                     }],
@@ -264,15 +281,15 @@
             }
         });
 
-/*         setTimeout(() => atualizarGrafico(idAvaliacao, dados), 2000); */
+        /*         setTimeout(() => atualizarGrafico(idAvaliacao, dados), 2000); */
     }
-
 
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
     // buscando a última medida inserida em tabela contendo as capturas, 
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
+
     function atualizarGrafico(idAvaliacao, dados) {
 
         fetch(`/medidas/tempo-real/${idAvaliacao}`, { cache: 'no-store' }).then(function (response) {

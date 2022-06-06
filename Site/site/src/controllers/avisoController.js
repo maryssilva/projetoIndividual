@@ -111,6 +111,7 @@ function editar(req, res) {
     var novoComentario = req.body.comentario;
     var idAvaliacao = req.params.idAvaliacao;
 
+
     avisoModel.editar(novoComentario, idAvaliacao)
         .then(
             function (resultado) {
@@ -124,7 +125,6 @@ function editar(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
-
 }
 
 function deletar(req, res) {

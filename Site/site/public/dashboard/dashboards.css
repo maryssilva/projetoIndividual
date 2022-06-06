@@ -150,7 +150,7 @@ a:hover {
   flex-direction: column;
   width: 80%;
   height: 550px;
-  background: rgba(0, 4, 255, 0.527);
+  background: rgba(0, 26, 255, 0.253);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px 0 rgb(0, 0, 0);
@@ -202,7 +202,7 @@ a:hover {
 }
 
 .tituloGraficos {
-  color: #E50508;
+  color: #000000;
   display: flex;
   justify-content: center;
 }
