@@ -162,7 +162,7 @@ a:hover {
 }
 
 .clique img {
-  width: 70px;
+  width: 60px;
   margin: 0;
 }
 
@@ -232,7 +232,7 @@ a:hover {
 .banner5 {
   width: 40vw;
   height: 100vh;
-  background-image: url('../assets/img/banner3.png');
+  background-image: url('../assets/img/banner4.png');
   background-size: cover;
 }
 
@@ -253,6 +253,79 @@ a:hover {
 }
 
 .banner6 .container p {
+  width: 600px;
+  font-size: 21px;
+}
+
+.sobre3 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.banner7 {
+  width: 60vw;
+  height: 100vh;
+  background-color: beige;
+}
+
+.banner7 .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: start;
+  letter-spacing: 3px;
+}
+
+.banner7 .container p {
+  width: 550px;
+  font-size: 24px;
+}
+
+.banner7 .container p a {
+  list-style: none;
+  color: #fbff00;
+}
+
+.banner8 {
+  width: 40vw;
+  height: 100vh;
+  background-image: url('../assets/img/banner5.png');
+  background-size: cover;
+}
+
+.sobre4 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.banner9 {
+  width: 40vw;
+  height: 100vh;
+  background-image: url('../assets/img/banner3.png');
+  background-size: cover;
+}
+
+.banner10 {
+  width: 60vw;
+  height: 100vh;
+  background-color: beige;
+}
+
+.banner10 .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: start;
+  letter-spacing: 3px;
+}
+
+.banner10 .container p {
   width: 450px;
   font-size: 25px;
 }
@@ -269,8 +342,20 @@ a:hover {
   margin-top: 30px;
 }
 
+.avalie img:hover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 60px;
+  border: none;
+  background-position: top;
+  transform: translateY(-10px);
+  transition: 1s;
+}
+
 .content-footer {
-  background-color: #0E1170;
+  background-color: #E50508;
 }
 
 .content-footer .container {

@@ -53,30 +53,30 @@
 
             <div class="regua">
                 <div class="item-regua otimo">
-                    <h2>Ótimo</h2>
+                    <h2 id="h2Otimo"></h2>
                     <h4>30 votos</h4>
                 </div>
                 <div class="item-regua bom">
-                    <h2>Bom</h2>
+                    <h2 id="h2Bom"></h2>
                     <h4>20 votos</h4>
                 </div>
                 <div class="item-regua regular">
-                    <h2>Regular</h2>
+                    <h2 id="h2Regular"></h2>
                     <h4>15 votos</h4>
                 </div>
                 <div class="item-regua ruim">
-                    <h2>Ruim</h2>
+                    <h2 id="h2Ruim"></h2>
                     <h4>10 votos</h4>
                 </div>
                 <div class="item-regua muito-ruim">
-                    <h2>Muito Ruim</h2>
+                    <h2 id="h2MuitoRuim"></h2>
                     <h4>5 votos</h4>
                 </div>
             </div>
             <div class="dash" onclick="obterDadosGrafico()">
                 <div>
                     <h2 class="tituloGraficos">
-                        <span id="tituloAquario">Avaliações Gerais</span>
+                        <span id="tituloAvaliacao">Avaliações Gerais</span>
                     </h2>
                 </div>
                 <div class="graph">
@@ -93,6 +93,14 @@
 </html>
 
 <script>
+    var metricas = ['Ótimo', 'Bom', 'Regular', 'Ruim', 'Muito Ruim']
+
+    h2Otimo.innerHTML = metricas[0]
+    h2Bom.innerHTML = metricas[1]
+    h2Regular.innerHTML = metricas[2]
+    h2Ruim.innerHTML = metricas[3]
+    h2MuitoRuim.innerHTML = metricas[4]
+
     let proximaAtualizacao;
 
     window.onload = obterDadosGrafico(1);
@@ -100,8 +108,8 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function alterarTitulo(idAvaliacao) {
-        var tituloAquario = document.getElementById("tituloAquario")
-        tituloAquario.innerHTML = "Avaliações Gerais"
+        var tituloAvaliacao = document.getElementById("tituloAvaliacao")
+        tituloAvaliacao.innerHTML = "Avaliações Gerais"
     }
 
     // O gráfico é construído com três funções:
@@ -151,8 +159,8 @@
                 {
                     yAxisID: 'y-recife',
                     label: 'Recife',
-                    borderColor: '#32B9CD',
-                    backgroundColor: '#32b9cd8f',
+                    borderColor: '#FFF',
+                    backgroundColor: '#E50508',
                     fill: true,
                     data: []
                 },
@@ -160,7 +168,7 @@
                     yAxisID: 'y-olinda',
                     label: 'Olinda',
                     borderColor: '#FFF',
-                    backgroundColor: '#32b9cd8f',
+                    backgroundColor: '#0E1170',
                     fill: true,
                     data: []
                 },
@@ -168,7 +176,7 @@
                     yAxisID: 'y-porto',
                     label: 'Porto de Galinhas',
                     borderColor: '#FFF',
-                    backgroundColor: '#32b9cd8f',
+                    backgroundColor: '#FBFF00',
                     fill: true,
                     data: []
                 },
@@ -176,21 +184,25 @@
                     yAxisID: 'y-ilha',
                     label: 'Ilha de Itamaracá',
                     borderColor: '#FFF',
-                    backgroundColor: '#32b9cd8f',
+                    backgroundColor: '#1EFF00',
                     fill: true,
                     data: []
                 }
             ]
         };
 
+        var dado = []
+
         for (i = 0; i < resposta.length; i++) {
+            
             var registro = resposta[i];
-            dados.labels.push(registro.cidades);
-            dados.datasets[0].data.push(registro.avaliacoes);
-            dados.datasets[1].data.push(registro.temperatura);
-            dados.datasets[2].data.push(registro.temperatura);
-            dados.datasets[3].data.push(registro.temperatura);
+            dado.push(registro.Avaliações)
         }
+        dados.datasets[0].data.push(dado[0]);
+        dados.datasets[1].data.push(dado[1]);
+        dados.datasets[2].data.push(dado[2]);
+        dados.datasets[3].data.push(dado[3]);
+        dados.labels.push("Cidades"); 
 
         console.log(JSON.stringify(dados));
 
@@ -214,7 +226,7 @@
                         id: 'y-recife',
                         ticks: {
                             beginAtZero: true,
-                            max: 100,
+                            max: 40,
                             min: 0
                         }
                     }, {
@@ -223,32 +235,28 @@
                         position: 'right',
                         id: 'y-olinda',
                         ticks: {
-                            beginAtZero: true,
-                            max: 100,
-                            min: 0
-                        },
-
-                        gridLines: {
-                            drawOnChartArea: false,
-                        },
-                    }, {
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        id: 'y-porto',
-                        ticks: {
-                            beginAtZero: true,
-                            max: 100,
+                            beginAtZero: false,
+                            max: 40,
                             min: 0
                         }
                     }, {
                         type: 'linear',
-                        display: true,
+                        display: false,
+                        position: 'left',
+                        id: 'y-porto',
+                        ticks: {
+                            beginAtZero: false,
+                            max: 40,
+                            min: 0
+                        }
+                    }, {
+                        type: 'linear',
+                        display: false,
                         position: 'left',
                         id: 'y-ilha',
                         ticks: {
-                            beginAtZero: true,
-                            max: 100,
+                            beginAtZero: false,
+                            max: 40,
                             min: 0
                         }
                     }],
@@ -256,7 +264,7 @@
             }
         });
 
-        setTimeout(() => atualizarGrafico(idAvaliacao, dados), 2000);
+/*         setTimeout(() => atualizarGrafico(idAvaliacao, dados), 2000); */
     }
 
 
@@ -276,7 +284,7 @@
 
                     // tirando e colocando valores no gráfico
                     dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro[0].cidades); // incluir um novo momento
+                    dados.labels.push(novoRegistro[0].cidade); // incluir um novo momento
 
                     dados.datasets[0].data.shift();  // apagar o primeiro de umidade
                     dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade

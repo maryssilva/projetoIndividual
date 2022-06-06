@@ -22,20 +22,22 @@ CREATE TABLE cidades(
 
 CREATE TABLE avaliacao(
 	idAvaliacao INT PRIMARY KEY AUTO_INCREMENT,
-	fkUsuario INT,
-    FOREIGN KEY (fkUsuario) REFERENCES usuario(id), 
 	fkCidade INT,
     FOREIGN KEY (fkCidade) REFERENCES cidades(idCidades),
-    comentario VARCHAR(200)
+    comentario VARCHAR(200),
+	fkUsuario INT,
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
 );
 
 SELECT * FROM usuario;
+SELECT * FROM cidades;
+SELECT * FROM avaliacao;
 
-INSERT INTO cidades
-VALUES (NULL,'Recife'),
-		(NULL,'Olinda'),
-        (NULL,'Porto de Galinhas'),
-        (NULL,'Ilha de Itamaracá');
+SELECT cidade AS 'Cidade', COUNT(fkCidade) AS 'Avaliações'
+FROM avaliacao
+JOIN cidades
+ON idCidades = fkCidade
+GROUP BY cidade;
 
 /* para sql server - remoto - produção */
 CREATE TABLE usuario (
