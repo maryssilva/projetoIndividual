@@ -159,6 +159,12 @@ a:hover {
     color: #E50508;
     align-items: center;
     justify-content: center;
+    margin-top: 7px;
+}
+
+.hello h3 {
+    padding: 0;
+    margin: 0;
 }
 
 /*

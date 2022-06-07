@@ -325,7 +325,7 @@ a:hover {
 }
 
 .banner10 .container p {
-  width: 450px;
+  width: 600px;
   font-size: 25px;
 }
 
@@ -359,8 +359,7 @@ a:hover {
 
 .content-footer .container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 

@@ -43,9 +43,8 @@
         <div class="historia">
             <p>Porto de Galinhas é a cidade conhecida por suas piscinas naturais, a Praia de Muro Alto e suas
                 referências ao frevo, essa é de longe a cidade que eu mais gosto de Pernambuco por ser uma cidade muito
-                tranquila e também muito bonita. As cores, formatos, os barcos, são as coisas mais maravilhosas que já
-                vi.</p>
-            <button type="button" onclick="Mudarestado('mostrar')">AVALIE SÓ</button>
+                tranquila e também muito bonita. As cores, formatos, os barcos, são as coisas que marcam a cidade e em todo lugar que você pise lá, vai ter algo do tipo.</p>
+            <button type="button" onclick="Mudarestado('mostrar')"><span id="avalieoufeche">AVALIE SÓ</span></button>
         </div>
 
         <div class="carrossel" id="mostrar" style="display: none">
@@ -53,15 +52,20 @@
                 <img src="./assets/viagem/porto1.jpg">
                 <img src="./assets/viagem/porto2.jpg">
                 <img src="./assets/viagem/porto3.jpg">
-                <img src="./assets/viagem/porto4.jpg">
-                <img src="./assets/viagem/porto5.jpg">
+                <img src="./assets/viagem/porto4.jpeg">
+                <img src="./assets/viagem/porto5.jpeg">
                 <img src="./assets/viagem/porto6.jpg">
                 <img src="./assets/viagem/porto7.jpg">
                 <img src="./assets/viagem/porto8.jpeg">
-                <img src="./assets/viagem/porto9.jpeg">
+                <img src="./assets/viagem/porto9.jpg">
                 <img src="./assets/viagem/porto10.jpeg">
-                <img src="./assets/viagem/porto11.jpeg">
+                <img src="./assets/viagem/porto11.jpg">
                 <img src="./assets/viagem/porto12.jpeg">
+                <img src="./assets/viagem/porto13.jpeg">
+                <img src="./assets/viagem/porto14.jpeg">
+                <img src="./assets/viagem/porto15.jpeg">
+                <img src="./assets/viagem/porto16.jpeg">
+                <img src="./assets/viagem/porto17.jpeg">
             </div>
         </div>
     </div>
@@ -96,7 +100,7 @@
     function passarCarrossel() {
         i++
 
-        if (i > img.length - 1) {
+        if (i > img.length - 9) {
             i = 0;
         }
 

@@ -113,10 +113,6 @@ a:hover {
     color: #E50508;
 }
 
-.banner {
-    height: 100vh;
-}
-
 .alerta_erro {
     display: flex;
     justify-content: center;
@@ -139,8 +135,12 @@ a:hover {
     font-size: 20px;
 }
 
+.banner {
+    height: 100vh;
+}
+
 .banner .container {
-    height: 700px;
+    height: 100vh;
     display: flex;
     align-items: center;
 }
@@ -267,8 +267,7 @@ button:hover {
 
 .content-footer .container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -280,7 +279,7 @@ ion-icon {
     color: #FFFFFF;
 }
 
-.footer {
+/* .footer {
     background-color: #E50508;
     height: 80px;
     color: #FFFFFF;
@@ -296,4 +295,4 @@ ion-icon {
     align-items: center;
     justify-content: center;
     display: flex;
-}
+} */

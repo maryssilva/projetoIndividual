@@ -42,7 +42,7 @@
     <div class="banner">
         <div class="historia">
             <p>Ilha de Itamaracá conta com a Praia do Forte Orange, que foi construída pelos holandeses após a invasão da ilha em 1631. O ponto turístico existe até hoje e é aberto para visitação do público, o lugar por dentro é lindo e deixa a gente bastante curioso para saber a história. No começo da pandemia o lugar estava fechado, então infelizmente não consegui conhecer por dentro, mas o lugar por fora também é muito interessante e por gostar de lugares antigos, foi o lugar que mais tirei fotos.</p>
-            <button type="button" onclick="Mudarestado('mostrar')">AVALIE SÓ</button>
+            <button type="button" onclick="Mudarestado('mostrar')"><span id="avalieoufeche">AVALIE SÓ</span></button>
         </div>
 
         <div class="carrossel" id="mostrar" style="display: none">
@@ -62,13 +62,17 @@
                 <img src="./assets/viagem/ilha13.jpg">
                 <img src="./assets/viagem/ilha14.jpg">
                 <img src="./assets/viagem/ilha15.jpg">
-                <img src="./assets/viagem/ilha16.jpg">
-                <img src="./assets/viagem/ilha17.jpg">
+                <img src="./assets/viagem/ilha16.jpeg">
+                <img src="./assets/viagem/ilha17.jpeg">
                 <img src="./assets/viagem/ilha18.jpg">
                 <img src="./assets/viagem/ilha19.jpg">
                 <img src="./assets/viagem/ilha20.jpg">
                 <img src="./assets/viagem/ilha21.jpeg">
-                <img src="./assets/viagem/ilha22.jpeg">
+                <img src="./assets/viagem/ilha22.jpg">
+                <img src="./assets/viagem/ilha23.jpg">
+                <img src="./assets/viagem/ilha24.jpeg">
+                <img src="./assets/viagem/ilha25.jpeg">
+                <img src="./assets/viagem/ilha26.jpeg">
             </div>
         </div>
     </div>
@@ -103,12 +107,12 @@
     function passarCarrossel() {
         i++
 
-        if (i >= img.length - 4) {
+        if (i >= img.length - 6) {
             i = 0;
         }
 
         imgs.style.transform = `translateX(${-i * 975}px)`;
     }
 
-    setInterval(passarCarrossel, 1000);
+    setInterval(passarCarrossel, 3000);
 </script>
