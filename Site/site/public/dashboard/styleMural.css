@@ -313,6 +313,7 @@ select option {
     align-items: stretch;
     color: black;
     margin: 20px 20px;
+    padding: 5px 5px;
     background-color: beige;
     border-radius: 6px;
     /* border: 3px solid #0E1170; */

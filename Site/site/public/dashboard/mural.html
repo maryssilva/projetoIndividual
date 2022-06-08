@@ -193,6 +193,7 @@
                         var spanselectCidades = document.createElement("span");
                         var spanNome = document.createElement("span");
                         var divcomentario = document.createElement("div");
+                        var spanDataHora = document.createElement("span");
                         var divButtons = document.createElement("div");
                         var btnEditar = document.createElement("button");
                         var btnDeletar = document.createElement("button");
@@ -201,6 +202,7 @@
                         spanNome.style.color="#E50508"
                         spanselectCidades.innerHTML = "Cidade selecionada: <b>" + publicacao.cidade + "</b>";
                         divcomentario.innerHTML = "Comentário: <b>" + publicacao.comentario + "</b>";
+                        spanDataHora.innerHTML = "Data e Horário: <b>" + publicacao.dataHora + "</b>";
                         /* btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar"; */
 
@@ -209,6 +211,7 @@
                         spanNome.className = "publicacao-nome";
                         spanselectCidades.className = "publicacao-selectCidades";
                         divcomentario.className = "publicacao-comentario";
+                        spanDataHora.className = "publicacao-dataHora";
 
                         /* divButtons.className = "div-buttons" */
 
@@ -224,8 +227,9 @@
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(spanselectCidades);
                         divPublicacao.appendChild(divcomentario);
-                        divPublicacao.appendChild(divButtons);
-                       /*  divButtons.appendChild(btnEditar);
+                        divPublicacao.appendChild(spanDataHora);
+                        /* divPublicacao.appendChild(divButtons);
+                        divButtons.appendChild(btnEditar);
                         divButtons.appendChild(btnDeletar); */
                         feed.appendChild(divPublicacao);
                     }
