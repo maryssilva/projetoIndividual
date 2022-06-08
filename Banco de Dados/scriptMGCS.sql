@@ -21,15 +21,10 @@ CREATE TABLE avaliacao(
     FOREIGN KEY (fkCidade) REFERENCES cidades(idCidades),
     comentario VARCHAR(200),
 	fkUsuario INT,
-    FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
+    dataHora DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 SELECT * FROM usuario;
 SELECT * FROM cidades;
 SELECT * FROM avaliacao;
-
-SELECT cidade AS 'Cidade', COUNT(fkCidade) AS 'Avaliações'
-FROM avaliacao
-JOIN cidades
-ON idCidades = fkCidade
-GROUP BY cidade;
